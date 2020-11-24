@@ -2,7 +2,14 @@ import pygame
 
 from constants import *
 from screen import create_screen, update_screen
-from world import create_world
+from world import create_world, get_room
+
+
+def transfer_item(source, target, item):
+    if item in source:
+        source.remove(item)
+        target.append(item)
+    return source, target
 
 
 def main():
@@ -14,6 +21,7 @@ def main():
     clock = pygame.time.Clock()
     # Coordonnées [x, y] du joueur
     position = [0, 0]
+    inventory = []
 
     # Les variables qui nous permettent de savoir si notre programme est en cours d'exécution ou s'il doit se terminer.
     alive = True
@@ -53,6 +61,11 @@ def main():
                 elif event.key == pygame.K_RIGHT:
                     if position[0] < WORLD_WIDTH - 1:
                         position = [position[0] + 1, position[1]]
+                elif event.key == pygame.K_SPACE:
+                    room = get_room(world, position[0], position[1])
+                    if len(room) > 0:
+                        item = room[0]
+                        room, inventory = transfer_item(room, inventory, item)
             elif event.type == pygame.KEYUP:
                 # Une touche du clavier a été relachée.
                 pass
