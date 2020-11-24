@@ -2,10 +2,12 @@ import random
 
 from constants import *
 
-
 def create_world():
-    world = []
-
-    # TODO Il faut remplir notre terrain ici, en fonction de la taille choisie préalablement.
+    world = [[["clé"], ["livre"], ["chaise"], ["porte"], ["lunettes"]],
+             [["ordinateur"],["bouteille"],["portable"],["arbre"],["voiture"]],
+             [["souris"],["chat"],["chien"],["lion"],["elephant"]],
+             [["chateau"],["jeans"],["pull"],["T-shirt"],["imane"]],
+             [[],["word"],["princesse"],["jonny"],[]],
+             [["tableau"],["oiseau"],["veste"],["masque"],["dragon"]]]
 
     return world
