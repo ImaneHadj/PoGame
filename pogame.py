@@ -74,6 +74,10 @@ def main():
         update_screen(screen, background, world, position, inventory)
         clock.tick()
 
+        if len(inventory) >= 10:
+            # Le joueur a gagné !
+            break
+
 
 if __name__ == "__main__":
     try:
