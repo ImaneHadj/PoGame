@@ -1,6 +1,7 @@
 import pygame
 
 from constants import *
+from world import get_room
 
 
 def create_screen(world):
@@ -53,6 +54,19 @@ def update_screen(screen, background, world, player):
             PLAYER_SIZE,
         ],
     )
+
+    for y in range(WORLD_HEIGHT):
+        for x in range(WORLD_WIDTH):
+            if "cookie" in get_room(world, x, y):
+                pygame.draw.circle(
+                    screen,
+                    (250, 180, 40),
+                    (
+                        x * ROOM_SIZE + ROOM_SIZE - COOKIE_RADIUS * 2,
+                        y * ROOM_SIZE + ROOM_SIZE - COOKIE_RADIUS * 2,
+                    ),
+                    COOKIE_RADIUS,
+                )
 
     # TODO en théorie, il faudrait utiliser les éléments du monde pour afficher d'autres choses sur notre écran ...
 
