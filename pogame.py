@@ -13,14 +13,14 @@ def main():
     # Création d'une horloge
     clock = pygame.time.Clock()
     # Coordonnées [x, y] du joueur
-    player = [0, 0]
+    position = [0, 0]
 
     # Les variables qui nous permettent de savoir si notre programme est en cours d'exécution ou s'il doit se terminer.
     alive = True
     running = True
 
     # On met à jour ce qu'on affiche sur l'écran, et on "pousse" l'aiguille de l'horloge d'un pas.
-    update_screen(screen, background, world, player)
+    update_screen(screen, background, world, position)
     clock.tick()
 
     # Boucle "quasi" infinie, qui s'arrêtera si le joueur est mort, ou si l'arrêt du programme est demandé.
@@ -41,12 +41,24 @@ def main():
                     # À la prochaine itération de notre boucle principale, la condition sera fausse et le programme va
                     # se terminer.
                     running = False
+                elif event.key == pygame.K_UP:
+                    if position[1] > 0:
+                        position = [position[0], position[1] - 1]
+                elif event.key == pygame.K_DOWN:
+                    if position[1] < WORLD_HEIGHT - 1:
+                        position = [position[0], position[1] + 1]
+                elif event.key == pygame.K_LEFT:
+                    if position[0] > 0:
+                        position = [position[0] - 1, position[1]]
+                elif event.key == pygame.K_RIGHT:
+                    if position[0] < WORLD_WIDTH - 1:
+                        position = [position[0] + 1, position[1]]
             elif event.type == pygame.KEYUP:
                 # Une touche du clavier a été relachée.
                 pass
 
         # On met à jour ce qu'on affiche sur l'écran, et on "pousse" l'aiguille de l'horloge d'un pas.
-        update_screen(screen, background, world, player)
+        update_screen(screen, background, world, position)
         clock.tick()
 
 
