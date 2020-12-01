@@ -55,5 +55,17 @@ def update_screen(screen, background, world, player):
     )
 
     # TODO en théorie, il faudrait utiliser les éléments du monde pour afficher d'autres choses sur notre écran ...
-
+    for y in range(len(world)):
+        for x in range(len(world[y])):
+            if world[y][x]:
+                pygame.draw.rect(
+                    screen,
+                    (0, 128, 255),
+                    [
+                        x * ROOM_SIZE + (ROOM_SIZE - OBJECT_SIZE) / 2,
+                        y * ROOM_SIZE + (ROOM_SIZE - OBJECT_SIZE) / 2,
+                        OBJECT_SIZE,
+                        OBJECT_SIZE,
+                    ],
+                )
     pygame.display.flip()

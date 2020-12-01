@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import pygame
 
 from constants import *
@@ -62,22 +63,22 @@ def main():
                   if player[0] < WORLD_WIDTH - 1:
                     player = (player[0] + 1, player[1])
                 elif event.key == pygame.K_i:
-                   if  world[player[0]][player[1]]:
-                        print(world[player[0]][player[1]])
+                   if  world[player[1]][player[0]]:
+                        print(world[player[1]][player[0]][0],"trouvé")
                    else:
                        print("this is empty")
                 elif event.key == pygame.K_d:
                     if  inventory:
-                        world[player[0]][player[1]].append(inventory[0])
+                        world[player[1]][player[0]]=inventory[0]
                         inventory.pop(0)
                     else:
                         print("inventory is empty")
                 elif event.key == pygame.K_p:
-                    if  world:
-                        inventory.append(world[player[0]][player[1]][0])
-                        world[player[0]][player[1]].pop(0)
+                    if  world[player[1]][player[0]]:
+                        inventory.append(world[player[1]][player[0]])
+                        world[player[1]][player[0]]=[]
                     else:
-                        print("world is empty")
+                        print("this is empty")
                 elif event.key == pygame.K_v:
                    if  inventory:
                         print(inventory)
