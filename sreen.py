@@ -43,13 +43,6 @@ def update_screen(screen, background, world, player):
     screen.blit(background, (0, 0))
 
     # couleur (red, green, blue)
-    bonhomme=pygame.image.load('bonhomme.png')
-    screen.blit(
-        bonhomme,
-        (player_x * ROOM_SIZE + (ROOM_SIZE - PLAYER_SIZE) / 2-5,
-        player_y * ROOM_SIZE + (ROOM_SIZE - PLAYER_SIZE) / 2-5)
-    )
-    """
     pygame.draw.rect(
         screen,
         (224, 64, 64),
@@ -60,7 +53,6 @@ def update_screen(screen, background, world, player):
             PLAYER_SIZE,
         ],
     )
-    """
 
     # TODO en théorie, il faudrait utiliser les éléments du monde pour afficher d'autres choses sur notre écran ...
     for y in range(len(world)):
